@@ -32,11 +32,20 @@ public class PlayerControllerX : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             playerRb.AddForce(verticalInput * focalPoint.transform.forward, ForceMode.Impulse);
-            speedUpParticle.Play();
+
+            // Play particle if not already playing
+            if (!speedUpParticle.isPlaying)
+            {
+                speedUpParticle.Play();
+            }
         }
         else
         {
-            speedUpParticle.Stop();
+            // Stop particle if currently playing
+            if (speedUpParticle.isPlaying)
+            {
+                speedUpParticle.Stop();
+            }
         }
 
 
